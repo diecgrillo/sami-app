@@ -10,7 +10,7 @@
 
 ### Clone the project
 
-`$ git clone git@github.com:`
+`$ git clone https://github.com/diecgrillo/sami-app.git`
 
 ### Move to the directory
 
@@ -29,6 +29,36 @@
 `$ docker-compose run app npm install`
 
 ## Requests
+
+GET users
+`$ curl --location --request GET 'localhost:8000/users'`
+
+CREATE user
+```
+curl --location --request POST 'localhost:8000/users' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "cpf": "12345678912",
+	"name": "Teste 1",
+	"rg": "123456789",
+	"birthDate": "2015-02-02",
+	"healthInsurance": {
+		"type": "Premium",
+		"dependentsNumber": 3
+	}
+}'
+```
+
+UPDATE user
+```
+curl --location --request PATCH 'localhost:8000/users/SOME_USER_ID' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	"name": "Teste 1 atualizado"
+}'
+```
+DELETE user
+`$ curl --location --request DELETE 'localhost:8000/users/SOME_USER_ID'`
 
 ## Development notes
 
